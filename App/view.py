@@ -78,23 +78,27 @@ def optionTwo(cont):
 
 
 def optionThree(cont):
+    ans=controller.connectedComponents(cont)
     print('El número de componentes conectados es: ' +
-          str(controller.connectedComponents(cont)))
+          str(ans[0]))
+    print(ans[1],'[ms]')
 
 
 def optionFour(cont, initialStation):
-    controller.minimumCostPaths(cont, initialStation)
-
+    ans=controller.minimumCostPaths(cont, initialStation)
+    print(ans[1],'[ms]')
 
 def optionFive(cont, destStation):
-    haspath = controller.hasPath(cont, destStation)
+    ans = controller.hasPath(cont, destStation)
     print('Hay camino entre la estación base : ' +
           'y la estación: ' + destStation + ': ')
-    print(haspath)
+    print(ans[0])
+    print(ans[1],'[ms]')
 
 
 def optionSix(cont, destStation):
-    path = controller.minimumCostPath(cont, destStation)
+    ans = controller.minimumCostPath(cont, destStation)
+    path=ans[0]
     if path is not None:
         pathlen = stack.size(path)
         print('El camino es de longitud: ' + str(pathlen))
@@ -103,12 +107,15 @@ def optionSix(cont, destStation):
             print(stop)
     else:
         print('No hay camino')
+    print(ans[1],'[ms]')
 
 
 def optionSeven(cont):
-    maxvert, maxdeg = controller.servedRoutes(cont)
-    print('Estación: ' + maxvert + '  Total rutas servidas: '
+    ans = controller.servedRoutes(cont)
+    maxvert, maxdeg=ans[0]
+    print('Estación: ' + str(maxvert) + '  Total rutas servidas: '
           + str(maxdeg))
+    print(ans[1],'[ms]')
 
 
 """
